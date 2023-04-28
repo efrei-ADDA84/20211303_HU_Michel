@@ -16,6 +16,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
     - name: Build the Docker image
-      run: docker build . -t michouuuuu/efrei-devops-tp2:1.0.0
+      run: docker build TP2 -t michouuuuu/efrei-devops-tp2:1.0.0
     - name: Push the Docker image
       run: docker push michouuuuu/efrei-devops-tp2:1.0.0

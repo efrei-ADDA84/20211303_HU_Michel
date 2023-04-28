@@ -1,25 +1,21 @@
-name: Build and Push Docker Image
+name: publishDockerImage
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
+
 jobs:
-  build-and-push:
+   buildPushImage:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-      
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.username }}
-          password: ${{ secrets.password }}
-
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: ${{ env.michouuuuu/efrei-devops-tp2 }}:latest
+    - uses: actions/checkout@v2
+    - name: Login
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+    - name: Build the Docker image
+      run: docker build . -t michouuuuu/efrei-devops-tp2:1.0.0
+    - name: Push the Docker image
+      run: docker push michouuuuu/efrei-devops-tp2:1.0.0

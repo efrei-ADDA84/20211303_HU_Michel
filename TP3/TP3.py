@@ -18,4 +18,4 @@ async def get_weather(request: Request):
     return {"ville": ville, "info_globale": info_globale, "temperature": temperature}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8080)
+    uvicorn.run(app, host="localhost", port=80)
